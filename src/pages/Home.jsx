@@ -1,8 +1,17 @@
 import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import MenuCard from "../components/MenuCard";
+import { getMenusFetch } from "../api/getMenusFetch";
 
 const Home = () => {
   const { user, logout } = useContext(AuthContext);
+  const [menus, setMenus] = useState([]);
+
+  useEffect(() => {
+    getMenusFetch()
+      .then((data) => setMenus(data))
+      .catch((error) => console.log(error));
+  },[]);
 
   return (
     <>
@@ -14,6 +23,11 @@ const Home = () => {
           Cerrar Sesion
         </button>
       </div>
+      
+      {menus.map((menu) => (
+        <MenuCard key={menu._id} menu={menu} />
+
+      ))}
     </>
   );
 };
