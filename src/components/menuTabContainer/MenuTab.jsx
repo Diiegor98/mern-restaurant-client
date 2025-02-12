@@ -2,10 +2,10 @@ import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import styles from "./menutab.module.css";
 import { Button } from "react-bootstrap";
+import { deleteMenuFetch } from "../../api/menu/deleteMenuFetch";
 
 const MenuTab = ({ menu }) => {
-  const { image, name, category, price, status } = menu;
-
+  const { image, name, category, price, status, _id } = menu;
   return (
     <Card className="d-flex flex-row justify-content-between justify-content-md-around align-items-center p-1 my-2">
       <img
@@ -27,7 +27,7 @@ const MenuTab = ({ menu }) => {
         <Button>
           <i className="bi bi-pencil-square"></i>
         </Button>
-        <Button variant="danger">
+        <Button variant="danger" onClick={() => deleteMenuFetch(_id)}>
           <i className="bi bi-trash-fill"></i>
         </Button>{" "}
       </div>

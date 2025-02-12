@@ -9,7 +9,7 @@ const MenuTabContainer = () => {
     getMenusFetch()
       .then((data) => setMenus(data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [menus]);
 
   return (
     <div className="d-flex flex-column bg-light">
