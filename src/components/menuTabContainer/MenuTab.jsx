@@ -3,6 +3,7 @@ import Badge from "react-bootstrap/Badge";
 import styles from "./menutab.module.css";
 import { Button } from "react-bootstrap";
 import { deleteMenuFetch } from "../../api/menu/deleteMenuFetch";
+import UpdateMenuButton from "../updateMenuButton/UpdateMenuButton";
 
 const MenuTab = ({ menu }) => {
   const { image, name, category, price, status, _id } = menu;
@@ -24,9 +25,7 @@ const MenuTab = ({ menu }) => {
       <span className={styles.menutab__price}>${price}</span>
 
       <div className="d-flex flex-row gap-2">
-        <Button>
-          <i className="bi bi-pencil-square"></i>
-        </Button>
+        <UpdateMenuButton menu={menu} />
         <Button variant="danger" onClick={() => deleteMenuFetch(_id)}>
           <i className="bi bi-trash-fill"></i>
         </Button>{" "}
