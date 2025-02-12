@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginFetch } from "../api/loginFetch";
+import { loginFetch } from "../api/auth/loginFetch";
 import { AuthContext } from "../context/AuthContext";
+import { Card, Button } from "react-bootstrap";
+import styles from "./registerAndLogin.module.css";
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -37,32 +39,41 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <div>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-      </div>
-      {error && <p className="alert alert-danger">{error}</p>}
-      <button type="submit">Login</button>
-      <p>
-        ¿No tienes una cuenta? <Link to="/">Regístrate</Link>
-      </p>
-    </form>
+    <Card className={styles.form__container}>
+      <Card.Title className={styles.form__brand}>HAMBURDEV</Card.Title>
+      <form className={styles.form__form} onSubmit={handleSubmit}>
+        <Card.Title className={`${styles.form__title} // mb-4 fw-bold fs-1`}>
+          Iniciar Sesión
+        </Card.Title>
+        <div className={`${styles.form__emaillabel} // mb-3`}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className={styles.form__emailinput}
+          />
+        </div>
+        <div className={`${styles.form__passwordlabel} // mb-3`}>
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleInputChange}
+            className={styles.form__passwordinput}
+          />
+        </div>
+        {error && <p className="alert alert-danger">{error}</p>}
+        <Button className={`${styles.form__button} // my-4 w-100`} type="submit">
+          Enviar
+        </Button>
+        <p className={styles.form__text}>
+          ¿No tienes una cuenta? <Link className={`${styles.form__link}  // fw-bold`} to="/">Regístrate</Link>
+        </p>
+      </form>
+    </Card>
   );
 };
 

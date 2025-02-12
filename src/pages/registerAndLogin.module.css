@@ -1,0 +1,64 @@
+.form__container {
+  background-color: #ff9b19;
+  border: none;
+  border-top: 10px solid #c1280f;
+  padding: 30px;
+}
+
+.form__brand{
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 28px;
+  background-color: #c1280f;
+  color: #e9ddcc;
+  margin-bottom: 14px;
+}
+
+.form__title {
+  color: #c1280f;
+}
+
+.form__emailinput,
+.form__nameinput,
+.form__passwordinput {
+  width: 100%;
+  border: 2px solid #c1280f;
+  border-radius: 6px;
+  background-color: #e9ddcc;
+  padding: 6px 8px;
+  color: black;
+}
+
+.form__emailinput:focus,
+.form__nameinput:focus,
+.form__passwordinput:focus {
+  color: black;
+  outline: none;
+}
+
+.form__button {
+  border: 2px solid #c1280f;
+  border: none;
+  background-color: #c1280f;
+  color: #e9ddcc;
+}
+
+.form__button:hover {
+  border: 2px solid #c1280f;
+  background-color: #e9ddcc;
+  color: #c1280f;
+}
+
+.form__button:active {
+  border: 2px solid #c1280f;
+  background-color: #e9ddcc;
+  color: #c1280f;
+}
+
+.form__link {
+  color: #c1280f;
+}
+
+.form__link:hover {
+  color: #c1280f98;
+}

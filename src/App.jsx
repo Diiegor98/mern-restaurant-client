@@ -6,7 +6,9 @@ import AppRouter from "./router";
 
 //Contexto global para rutas privadas
 import { AuthProvider } from "./context/AuthContext";
-import "./App.css";
+
+import './App.css'
+
 
 function App() {
   return (

@@ -1,0 +1,18 @@
+.menutab__img {
+  width: 60px;
+}
+
+.menutab__name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.menutab__category {
+  margin: 0;
+  font-size: 12px;
+}
+
+.menutab__price {
+  font-weight: bold;
+  font-size: 14px;
+}

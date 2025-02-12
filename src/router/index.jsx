@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import RegisterForm from '../pages/RegisterForm';
 import LoginForm from '../pages/LoginForm';
 import Home from '../pages/Home';
+import Admin from '../pages/Admin';
 
 //Context
 import { AuthContext } from '../context/AuthContext';
@@ -23,6 +24,7 @@ const AppRouter = () => {
 			{user ? (
 				<>
 					<Route path="/home" element={<Home />} />
+					<Route path="/admin" element={<Admin />} />
 				</>
 			) : null}
 		</Routes>
