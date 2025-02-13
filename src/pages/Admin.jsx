@@ -5,6 +5,7 @@ import MenuTabContainer from "../components/menuTabContainer/MenuTabContainer";
 import { Image } from "react-bootstrap";
 import headerImg from "../assets/header.jpg";
 import CreateMenuButton from "../components/createMenuButton/CreateMenuButton";
+import UsersTabContainer from "../components/usersTabContainer/UsersTabContainer";
 
 const Admin = () => {
   return (
@@ -29,7 +30,7 @@ const Admin = () => {
             <MenuTabContainer />
           </Tab>
           <Tab eventKey="usuarios" title="Usuarios">
-            Tab content for Profile
+            <UsersTabContainer />
           </Tab>
         </Tabs>
       </div>

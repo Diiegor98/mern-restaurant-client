@@ -1,0 +1,14 @@
+.usertab__name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.usertab__category {
+  margin: 0;
+  font-size: 12px;
+}
+
+.usertab__role {
+  margin: 0;
+  font-size: 12px;
+}

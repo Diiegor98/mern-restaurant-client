@@ -38,7 +38,7 @@ const Home = () => {
         />
       </div>
       <ButtonGroup
-        className="w-100 bg-light p-4 gap-2 rounded-0"
+        className="w-100 bg-light p-4 gap-2 rounded-0 flex-wrap "
         aria-label="Basic example"
       >
         <Button variant="dark" onClick={() => setCategory("")}>
