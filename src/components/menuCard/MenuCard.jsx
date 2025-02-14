@@ -2,9 +2,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import styles from "./menuCard.module.css";
 import { CardBody, CardTitle, Badge, CardText } from "react-bootstrap";
+import { useCart } from "../../context/CartContext";
 
 const MenuCard = ({ menu }) => {
   const { name, status, price, detail, category, image } = menu;
+
+  const { addToCart } = useCart();
 
   return (
     <Card className={`${styles.card}`}>
@@ -35,6 +38,9 @@ const MenuCard = ({ menu }) => {
               className={`${styles.card__button}`}
               disabled={!status}
               variant={!status ? "secondary" : null}
+              onClick={() => {
+                addToCart(menu);
+              }}
             >
               Comprar
             </Button>

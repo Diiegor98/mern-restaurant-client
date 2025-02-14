@@ -6,16 +6,18 @@ import AppRouter from "./router";
 
 //Contexto global para rutas privadas
 import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
 
-import './App.css'
-
+import "./App.css";
 
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
   );
 }

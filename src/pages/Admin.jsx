@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar/Navbar";
+import NavBar from "../components/Navbar/Navbar";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import MenuTabContainer from "../components/menuTabContainer/MenuTabContainer";
@@ -6,11 +6,12 @@ import { Image } from "react-bootstrap";
 import headerImg from "../assets/header.jpg";
 import CreateMenuButton from "../components/createMenuButton/CreateMenuButton";
 import UsersTabContainer from "../components/usersTabContainer/UsersTabContainer";
+import OrdersTabContainer from "../components/ordersTabContainer/OrdersTabContainer";
 
 const Admin = () => {
   return (
     <div className="admin__container // d-flex flex-column justify-content-start align-items-start">
-      <Navbar />
+      <NavBar />
       <div className="home__header-imgcontainer // w-100">
         <Image
           className="home__header-img"
@@ -31,6 +32,9 @@ const Admin = () => {
           </Tab>
           <Tab eventKey="usuarios" title="Usuarios">
             <UsersTabContainer />
+          </Tab>
+          <Tab eventKey="orders" title="Ordenes">
+            <OrdersTabContainer />
           </Tab>
         </Tabs>
       </div>
