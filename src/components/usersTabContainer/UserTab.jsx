@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import styles from "./usertab.module.css";
-// import { Button } from "react-bootstrap";
+import UpdateUserButton from  "../updateUserButton/UpdateUserButton"
 
 const UserTab = ({ user }) => {
   const { name, email, role, status } = user;
@@ -14,10 +14,7 @@ const UserTab = ({ user }) => {
         {status ? "Activo" : "No activo"}
       </Badge>
       <div className="d-flex flex-row gap-2">
-        {/* <UpdateMenuButton menu={menu} />
-        <Button variant="danger" onClick={() => deleteMenuFetch(_id)}>
-          <i className="bi bi-trash-fill"></i>
-        </Button>{" "} */}
+        <UpdateUserButton user={user} />
       </div>
     </Card>
   );
