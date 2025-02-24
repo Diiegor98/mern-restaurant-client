@@ -1,28 +1,33 @@
+//React
 import { useState } from "react";
+
+//React Router DOM
 import { Link, useNavigate } from "react-router-dom";
-import { registerFetch } from "../api/auth/registerFetch"
-import { Button, Card } from "react-bootstrap";
-import styles from "./registerAndLogin.module.css";
+
+//React Bootstrap
+import { Button, Card, Form, Alert } from "react-bootstrap";
+
+//Función para registrar al usuario en la DB
+import { registerFetch } from "../api/auth/registerFetch";
 
 const RegisterForm = () => {
-  /* 
-	datos del formulario
-   */
+  // Navigate para redireccionar al login luego de crear el usuario
+  const navigate = useNavigate();
+
+  //Estado del formulario de registro
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  /* Navigate para redireccionar luego de crear el usuario */
-  const navigate = useNavigate();
-
-  /* 
-	validacion de formulario
-   */
-  const [error, setError] = useState(null);
+  //Validación del formulario
+  const [validated, setValidated] = useState(false);
   const [success, setSuccess] = useState(false);
+  //Mensaje de error
+  const [error, setError] = useState("");
 
+  //Handler de cambios en el formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,75 +36,94 @@ const RegisterForm = () => {
     });
   };
 
-  /* 
-	obtener los datos del formulario de registro
-   */
+  //Handler de envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+      setValidated(true);
+      return;
+    }
+
+    setValidated(true);
 
     try {
       const res = await registerFetch(formData);
       setSuccess(res.msg);
-      setError("");
       setTimeout(() => {
         navigate("/login");
       }, "2000");
     } catch (error) {
-      setSuccess(false);
       setError(error.msg);
+      setSuccess(false);
     }
   };
 
   return (
-    <Card className={styles.form__container}>
-      <Card.Title className={styles.form__brand}>HAMBURDEV</Card.Title>
-      <form className={styles.form__form} onSubmit={handleSubmit}>
-        <Card.Title className={`${styles.form__title} // mb-4 fw-bold fs-1`}>
-          Registrate
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <Card className="bg-dark border border-warning">
+        <Card.Title className="text-warning my-4">
+          <p className="m-0 font-weight-bold fs-2">HAMBURDEV</p>
         </Card.Title>
-        <div className={`${styles.form__namelabel} // mb-3`}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre completo"
-            value={formData.name}
-            onChange={handleInputChange}
-            className={styles.form__nameinput}
-          />
-        </div>
-        <div className={`${styles.form__emaillabel} // mb-3`}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className={styles.form__emailinput}
-          />
-        </div>
-        <div className={`${styles.form__passwordlabel} // mb-3`}>
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={formData.password}
-            onChange={handleInputChange}
-            className={styles.form__passwordinput}
-          />
-        </div>
-        {error && <p className="alert alert-danger">{error}</p>}
-        <Button className={`${styles.form__button} // my-4 w-100`} type="submit">
-          Enviar
-        </Button>
-        {success && <p className="alert alert-success">{success}</p>}
-        <p className={styles.form__text}>
-          ¿Ya tienes una cuenta?{" "}
-          <Link className={`${styles.form__link}  // fw-bold`} to="/login">
-            Iniciar sesión
-          </Link>
-        </p>
-      </form>
-    </Card>
+        <Form
+          noValidate
+          validated={validated}
+          onSubmit={handleSubmit}
+          className="m-3 d-flex flex-column gap-3"
+        >
+          <Card.Title className="text-warning fs-5">Registrate</Card.Title>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              name="name"
+              placeholder="Nombre completo"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Debe ingresar su nombre
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Debe ingresar su email
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              value={formData.password}
+              onChange={handleInputChange}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Debe ingresar su ncontraseña
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Button variant="warning" type="submit">
+            Enviar
+          </Button>
+          {error ? <Alert variant="danger">{error}</Alert> : null}
+          {success && <p className="alert alert-success">{success}</p>}
+          <p>
+            ¿Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link>
+          </p>
+        </Form>
+      </Card>
+    </div>
   );
 };
 

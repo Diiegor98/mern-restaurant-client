@@ -1,6 +1,6 @@
 //Imports React
 import { useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 //Pages
 import RegisterForm from "../pages/RegisterForm";
@@ -21,10 +21,18 @@ const AppRouter = () => {
       <Route path="/" element={<RegisterForm />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="*" element={<LoginForm />} />
+
+      {/* Si está logueado se muestra el contenido de la web */}
       {user ? (
         <>
           <Route path="/home" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
+
+          {/* Si el rol del usuario es admin se puede dirigir a la ruta, sino redirige al home*/}
+          {user.role === "admin" ? (
+            <Route path="/admin" element={<Admin />} />
+          ) : (
+            <Route path="/admin" element={<Navigate to="/home" />} />
+          )}
           <Route path="/orders" element={<Orders />} />
         </>
       ) : null}

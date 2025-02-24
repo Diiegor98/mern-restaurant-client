@@ -1,5 +1,9 @@
+//React
 import { useState, createContext, useEffect } from "react";
+
+//Funcion para obtener la informacion del usuario logueado
 import { getUserFetch } from "../api/user/getUserFetch";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -17,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     })();
   }, []);
 
-  //Login
+  //Login y obtenemos todos los datos del usuario excepto la contraseña
   const login = async (token) => {
     try {
       const user = await getUserFetch(token);

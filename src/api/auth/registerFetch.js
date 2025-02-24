@@ -1,3 +1,5 @@
+//Función para registrar al usuario en la DB
+
 export const registerFetch = async (data) => {
   //Data viene desde el formulario de registro
   try {

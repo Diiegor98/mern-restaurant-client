@@ -8,6 +8,7 @@ import AppRouter from "./router";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 
+//Estilos
 import "./App.css";
 
 function App() {

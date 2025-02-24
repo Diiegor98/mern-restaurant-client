@@ -7,9 +7,5 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: "Roboto", serif;
-  background-color: #e9ddcc;
-  display: flex;
-  place-items: center;
-  background-image: url('./assets/10646.jpg');
-  background-size: cover
+  background-color: black;
 }

@@ -1,26 +1,19 @@
+//React Bootstrap
+import { Tab, Tabs } from "react-bootstrap";
+
+//Componentes propios
 import NavBar from "../components/Navbar/Navbar";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import MenuTabContainer from "../components/menuTabContainer/MenuTabContainer";
-import { Image } from "react-bootstrap";
-import headerImg from "../assets/header.jpg";
-import CreateMenuButton from "../components/createMenuButton/CreateMenuButton";
-import UsersTabContainer from "../components/usersTabContainer/UsersTabContainer";
-import OrdersTabContainer from "../components/ordersTabContainer/OrdersTabContainer";
+import MenuTabContainer from "../components/adminComponents/menuTabContainer/MenuTabContainer";
+import CreateMenuButton from "../components/adminComponents/createMenuButton/CreateMenuButton";
+import UsersTabContainer from "../components/adminComponents/usersTabContainer/UsersTabContainer";
+import OrdersTabContainer from "../components/adminComponents/ordersTabContainer/OrdersTabContainer";
+
 
 const Admin = () => {
   return (
-    <div className="admin__container // d-flex flex-column justify-content-start align-items-start">
+    <div className="d-flex flex-column justify-content-start align-items-start">
       <NavBar />
-      <div className="home__header-imgcontainer // w-100">
-        <Image
-          className="home__header-img"
-          src={headerImg}
-          alt="Cabecera"
-          fluid
-        />
-      </div>
-      <div className="admin__tabscontainer // bg-light w-100 vh-100">
+      <div className="w-100 mt-5">
         <Tabs
           defaultActiveKey="menus"
           id="uncontrolled-tab-example"
