@@ -1,10 +1,11 @@
 //Función para registrar al usuario en la DB
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const registerFetch = async (data) => {
   //Data viene desde el formulario de registro
   try {
-    const url = "http://localhost:3977/api/v1/auth/register";
-
+    const url = `${BACKEND_URL}/auth/register`;
     const params = {
       method: "POST",
       headers: {

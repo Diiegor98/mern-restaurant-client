@@ -1,6 +1,8 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const updateUserFetch = async (id, formData) => {
   try {
-    const response = await fetch(`http://localhost:3977/api/v1/user/${id}`, {
+    const response = await fetch(`${BACKEND_URL}/user/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json", // Indica que envías JSON

@@ -1,6 +1,8 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const createMenuFetch = async (data) => {
   try {
-    const url = "http://localhost:3977/api/v1/menu";
+    const url = `${BACKEND_URL}/menu`;
 
     const formData = new FormData();
     formData.append("name", data.name);

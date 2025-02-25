@@ -1,7 +1,9 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const loginFetch = async (data) => {
     //Data viene desde el formulario de login
     try {
-      const url = "http://localhost:3977/api/v1/auth/login";
+      const url = `${BACKEND_URL}/auth/login`;
   
       const params = {
         method: "POST",

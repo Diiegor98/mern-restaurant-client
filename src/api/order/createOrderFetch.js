@@ -1,9 +1,10 @@
 import formattedDate from "../utils/dateFormater";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const createOrderFetch = async (cartItems, totalPrice, user) => {
   //Data viene desde finalizar la compra
   try {
-    const url = "http://localhost:3977/api/v1/order";
+    const url = `${BACKEND_URL}/order`;
 
     const date = formattedDate(new Date());
 

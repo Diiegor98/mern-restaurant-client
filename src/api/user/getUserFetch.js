@@ -1,6 +1,9 @@
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const getUserFetch = async (token) => {
   try {
-    const url = "http://localhost:3977/api/v1/user/me";
+    const url = `${BACKEND_URL}/user/me`;
 
     const params = {
       method: "GET",

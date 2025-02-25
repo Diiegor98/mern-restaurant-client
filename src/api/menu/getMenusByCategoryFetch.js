@@ -1,6 +1,8 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const getMenusByCategoryFetch = async (category) => {
   try {
-    const url = `http://localhost:3977/api/v1/menu/${category}`;
+    const url = `${BACKEND_URL}/menu/${category}`;
     const response = await fetch(url);
 
     if (!response.ok) {

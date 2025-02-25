@@ -1,6 +1,9 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+
 export const updateMenuFetch = async (id, formData) => {
     try {
-      const response = await fetch(`http://localhost:3977/api/v1/menu/${id}`, {
+      const response = await fetch(`${BACKEND_URL}/menu/${id}`, {
         method: 'PUT',
         body: formData, // Enviamos el FormData con los datos
       });
