@@ -20,7 +20,7 @@ const MenuCard = ({ menu }) => {
   const { addToCart } = useCart();
 
   return (
-    <Card border="warning" style={{ width: "280px", height: "580px" }}>
+    <Card border="warning" style={{ width: "280px", Height: "580px" }}>
       <Card.Img
         className="w-100" style={{height: "300px", objectFit: "cover"}}
         variant="top"

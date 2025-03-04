@@ -1,5 +1,6 @@
 //React
 import { useState, createContext, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 
 //Funcion para obtener la informacion del usuario logueado
 import { getUserFetch } from "../api/user/getUserFetch";
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.clear();
   };
 
-  if (loading) return <p>Cargando</p>;
+  if (loading) return <Spinner animation="border" variant="warning" />;
 
   const data = {
     user,
