@@ -13,5 +13,6 @@ export const getMenusByCategoryFetch = async (category) => {
   } catch (error) {
     console.error("Error en la petición:", error);
     return [];
+    
   }
 };
