@@ -26,7 +26,7 @@ const ButtonsCategory = ({ setCategory }) => {
       <Button
         className="rounded-0"
         variant="outline-warning"
-        onClick={() => setCategory("Vegetarianas")}
+        onClick={() => setCategory("Vegetariana")}
       >
         Vegetarianas
       </Button>
