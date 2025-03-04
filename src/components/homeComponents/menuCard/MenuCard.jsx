@@ -25,7 +25,7 @@ const MenuCard = ({ menu }) => {
         className="w-100"
         style={{ height: "300px", objectFit: "cover" }}
         variant="top"
-        src={`${BACKEND_URL_IMAGE}/` + { image }}
+        src={`${BACKEND_URL_IMAGE}/` + image}
       />
       <CardBody className="d-flex flex-column gap-4 justify-content-between">
         <div>

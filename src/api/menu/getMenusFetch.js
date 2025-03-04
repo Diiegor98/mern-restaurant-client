@@ -5,7 +5,7 @@ export const getMenusFetch = async () => {
     const url = `${BACKEND_URL}/menus`;
     const response = await fetch(url);
     const result = await response.json();
-    
+
     if (response.status !== 200) throw response;
 
     return result;
