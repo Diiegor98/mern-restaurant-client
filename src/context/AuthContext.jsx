@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.clear();
   };
 
-  if (loading) return <Spinner animation="border" variant="warning" />;
+  if (loading) return <Spinner className="mt-4" animation="border" variant="warning" />;
 
   const data = {
     user,

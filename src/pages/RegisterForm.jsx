@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //React Bootstrap
-import { Button, Card, Form, Alert } from "react-bootstrap";
+import { Button, Card, Form, Alert, Spinner } from "react-bootstrap";
 
 //Función para registrar al usuario en la DB
 import { registerFetch } from "../api/auth/registerFetch";
@@ -24,6 +24,7 @@ const RegisterForm = () => {
   //Validación del formulario
   const [validated, setValidated] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   //Mensaje de error
   const [error, setError] = useState("");
 
@@ -48,6 +49,7 @@ const RegisterForm = () => {
     }
 
     setValidated(true);
+    setLoading(true);
 
     try {
       const res = await registerFetch(formData);
@@ -58,6 +60,8 @@ const RegisterForm = () => {
     } catch (error) {
       setError(error.msg);
       setSuccess(false);
+    } finally {
+      setLoading(false); // Desactivar el estado de "Cargando"
     }
   };
 
@@ -112,10 +116,12 @@ const RegisterForm = () => {
             <Form.Control.Feedback type="invalid">
               Debe ingresar su ncontraseña
             </Form.Control.Feedback>
+            {loading ? <Spinner className="mt-3" animation="border" variant="warning" /> : null}
           </Form.Group>
           <Button variant="warning" type="submit">
             Enviar
           </Button>
+          
           {error ? <Alert variant="danger">{error}</Alert> : null}
           {success && <p className="alert alert-success">{success}</p>}
           <p>

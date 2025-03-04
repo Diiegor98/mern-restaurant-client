@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //React Bootstrap
-import { Card, Button, Form, Alert } from "react-bootstrap";
+import { Card, Button, Form, Alert, Spinner } from "react-bootstrap";
 
 //Función para hacer el login
 import { loginFetch } from "../api/auth/loginFetch";
@@ -28,6 +28,7 @@ const LoginForm = () => {
 
   //Validación del formulario
   const [validated, setValidated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   //Mensaje de error
   const [error, setError] = useState("");
@@ -54,6 +55,7 @@ const LoginForm = () => {
     }
 
     setValidated(true);
+    setLoading(true);
 
     //Login
     try {
@@ -63,6 +65,8 @@ const LoginForm = () => {
       navigate("/home");
     } catch (error) {
       setError(error.msg);
+    } finally {
+      setLoading(false); // Desactivar el estado de "Cargando"
     }
   };
 
@@ -107,7 +111,11 @@ const LoginForm = () => {
             <Form.Control.Feedback type="invalid">
               Debe ingresar su contraseña
             </Form.Control.Feedback>
+            {loading ? (
+              <Spinner className="mt-3" animation="border" variant="warning" />
+            ) : null}
           </Form.Group>
+
           {error ? <Alert variant="danger">{error}</Alert> : null}
           <Button variant="warning" type="submit">
             Enviar
