@@ -1,4 +1,4 @@
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_URL_IMAGE = import.meta.env.VITE_BACKEND_URL_IMAGE;
 
 //React Bootstrap
 import {
@@ -24,7 +24,7 @@ const MenuCard = ({ menu }) => {
       <Card.Img
         className="w-100" style={{height: "300px", objectFit: "cover"}}
         variant="top"
-        src={`${BACKEND_URL}/${image}`}
+        src={`${BACKEND_URL_IMAGE}/${image}`}
       />
       <CardBody className="d-flex flex-column gap-4 justify-content-between">
         <div>
