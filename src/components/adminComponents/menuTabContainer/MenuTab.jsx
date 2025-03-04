@@ -1,3 +1,5 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 //React Bootstrap
 import { Button, Col, Row, Badge } from "react-bootstrap";
 
@@ -41,7 +43,7 @@ const MenuTab = ({ menu }) => {
       <Col>
         <img
           style={{ width: "50px", height: "50px", objectFit: "cover" }}
-          src={`http://localhost:3977/${image}`}
+          src={`${BACKEND_URL}/${image}`}
           alt={name}
         />
       </Col>
