@@ -19,6 +19,8 @@ const MenuCard = ({ menu }) => {
   //Hook para agregar productos al carrito
   const { addToCart } = useCart();
 
+  console.log(`${BACKEND_URL_IMAGE}/` + image)
+
   return (
     <Card border="warning" style={{ width: "280px", Height: "580px" }}>
       <Card.Img
