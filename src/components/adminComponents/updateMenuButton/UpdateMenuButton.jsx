@@ -179,7 +179,6 @@ function UpdateMenuButton({ menu }) {
                 name="image"
                 type="file"
                 accept="image/*"
-                required
                 onChange={handleInputChange}
               />
               <Form.Control.Feedback type="invalid">
