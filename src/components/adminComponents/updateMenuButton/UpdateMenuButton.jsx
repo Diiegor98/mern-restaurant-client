@@ -39,17 +39,15 @@ function UpdateMenuButton({ menu }) {
     const { name, value, type, files } = event.target;
 
     if (name === "status") {
-      if (value === "true") {
-        setFormData({ ...formData, status: true });
-      } else {
-        setFormData({ ...formData, status: false });
-      }
+      setFormData({ ...formData, status: value === "true" });
+      return;
     }
 
-    setFormData({
-      ...formData,
-      [name]: type === "file" ? files[0] : value, // Guarda el archivo en `image`
-    });
+    if (type === "file") {
+      setFormData({ ...formData, image: files[0] }); // Guarda la imagen como archivo
+    } else {
+      setFormData({ ...formData, [name]: value }); // Para otros campos
+    }
   };
 
   //Cuando envió el formulario del modal
@@ -69,7 +67,9 @@ function UpdateMenuButton({ menu }) {
     formDataToSend.append("price", formData.price);
     formDataToSend.append("detail", formData.detail);
     formDataToSend.append("status", formData.status);
-    if (formData.image) formDataToSend.append("image", formData.image);
+    if (formData.image) {
+      formDataToSend.append("image", formData.image);
+  }
 
     try {
       const res = await updateMenuFetch(menu._id, formDataToSend);

@@ -40,13 +40,13 @@ function CreateMenuButton() {
   const handleShow = () => setShow(true);
 
   //Cuando cambia el valor de los inputs
-  const handleInputChange = (event) => {
-    const { name, value, type, files } = event.target;
-    setFormData({
-      ...formData,
-      [name]: type === "file" ? files[0] : value, // Guarda el archivo en `image`
-    });
-  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+const handleImageChange = (e) => {
+  setFormData({ ...formData, image: e.target.files[0] });
+};
 
   //Cuando envió el formulario del modal
   const handleSubmit = async (event) => {
@@ -82,7 +82,6 @@ function CreateMenuButton() {
         <Modal.Body>
           <Form
             onSubmit={handleSubmit}
-            encType="multipart/form-data"
             noValidate
             validated={validated}
             className="d-flex flex-column gap-2"
@@ -93,7 +92,7 @@ function CreateMenuButton() {
                 type="text"
                 placeholder="Nombre"
                 value={formData.name}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 required
               ></Form.Control>
               <Form.Control.Feedback type="invalid">
@@ -103,7 +102,7 @@ function CreateMenuButton() {
             <FormGroup>
               <Form.Select
                 name="category"
-                onChange={handleInputChange}
+                onChange={handleChange}
                 value={formData.category}
                 required
               >
@@ -125,7 +124,7 @@ function CreateMenuButton() {
                 type="number"
                 placeholder="Precio"
                 value={formData.price}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -138,7 +137,7 @@ function CreateMenuButton() {
                 type="text"
                 placeholder="Descripcion"
                 value={formData.detail}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 required
               />
               <Form.Control.Feedback type="invalid">
@@ -152,7 +151,7 @@ function CreateMenuButton() {
                 type="file"
                 accept="image/*"
                 required
-                onChange={handleInputChange}
+                onChange={handleImageChange}
               />
               <Form.Control.Feedback type="invalid">
                 Seleccionar una imagen

@@ -9,10 +9,7 @@ export const createMenuFetch = async (data) => {
     formData.append("category", data.category);
     formData.append("price", data.price);
     formData.append("detail", data.detail);
-
-    if (data.image) {
-      formData.append("image", data.image);
-    }
+    formData.append("image", data.image);
 
     const response = await fetch(url, {
       method: "POST",

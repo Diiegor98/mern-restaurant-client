@@ -1,5 +1,3 @@
-const BACKEND_URL_IMAGE = import.meta.env.VITE_BACKEND_URL_IMAGE;
-
 //React Bootstrap
 import {
   CardBody,
@@ -19,15 +17,13 @@ const MenuCard = ({ menu }) => {
   //Hook para agregar productos al carrito
   const { addToCart } = useCart();
 
-  console.log(`${BACKEND_URL_IMAGE}/` + image)
-
   return (
     <Card border="warning" style={{ width: "280px", Height: "580px" }}>
       <Card.Img
         className="w-100"
         style={{ height: "300px", objectFit: "cover" }}
         variant="top"
-        src={`${BACKEND_URL_IMAGE}/` + image}
+        src={image}
       />
       <CardBody className="d-flex flex-column gap-4 justify-content-between">
         <div>
