@@ -21,6 +21,7 @@ function UpdateMenuButton({ menu }) {
     price: menu.price,
     detail: menu.detail,
     status: menu.status,
+    image: menu.image
   });
 
   //Cuando cierro el modal
